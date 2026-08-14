@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="解魚秀 × 板前料理｜從崁仔頂魚市到你的餐桌 - 職人神級刀工現場解魚，共作極鮮板前料理，限量外帶預購">
+<title>解魚秀 × 板前料理｜Farm新食</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF3EF;
+    --paper-deep:#F5E4DC;
+    --ink:#3A3530;
+    --ink-soft:#7A756D;
+    --wine:#3FA790;
+    --wine-deep:#2C7D6B;
+    --coral:#F0806B;
+    --coral-deep:#E0654F;
+    --gold:#F0806B;
+    --line:#EAD4C8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Noto Serif TC", serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(192,138,62,0.06), transparent 40%),
+      radial-gradient(circle at 80% 90%, rgba(44,110,99,0.08), transparent 45%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .wrap{max-width:640px;margin:0 auto;position:relative;z-index:1;}
+
+  /* TOP NAV BAR */
+  .top-nav {
+    position: sticky;
+    top: 0;
+    background: rgba(242, 237, 228, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    z-index: 100;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 10px rgba(46,58,59,0.05);
+  }
+  .nav-brand {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--wine-deep);
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .nav-menu::-webkit-scrollbar { display: none; }
+  .nav-item {
+    font-size: 13px;
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: var(--paper-deep);
+    border: 1px solid var(--line);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .nav-item:hover, .nav-item:active {
+    background: var(--wine);
+    color: var(--paper);
+    border-color: var(--wine);
+  }
+  .cart-badge {
+    background: var(--wine-deep);
+    color: #fff;
+    font-size: 11px;
+    padding: 1px 6px;
+    border-radius: 999px;
+    font-weight: bold;
+  }
+
+  .hero{
+    position:relative;
+    padding:0;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--paper-deep);
+  }
+  .banner-img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .hero-placeholder{
+    position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ink-soft);
+    font-size:13px;
+    letter-spacing:0.15em;
+    background:repeating-linear-gradient(45deg, var(--paper-deep), var(--paper-deep) 10px, var(--paper) 10px, var(--paper) 20px);
+  }
+
+  /* CATEGORY MENU（總覽首頁分類按鈕） */
+  .category-menu{
+    padding:16px 16px 6px;
+  }
+  .category-menu-title{
+    text-align:center;
+    font-size:12px;
+    letter-spacing:0.3em;
+    color:var(--ink-soft);
+    margin-bottom:12px;
+  }
+  .category-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+  .category-btn{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#FFFFFF;
+    border:1.5px solid var(--line);
+    border-radius:16px;
+    padding:12px 14px;
+    cursor:pointer;
+    text-align:left;
+    text-decoration:none;
+    font-family:"Noto Serif TC", serif;
+    transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease;
+    box-shadow:0 4px 10px -4px rgba(46,58,59,0.12);
+    position:relative;
+  }
+  .category-btn.full-width{
+    grid-column:1 / -1;
+    justify-content:center;
+  }
+  .category-btn:active{ transform:scale(0.97); }
+  .category-btn.active{
+    background:var(--wine);
+    border-color:var(--wine);
+  }
+  .category-btn.active .category-label,
+  .category-btn.active .category-icon{
+    color:#fff;
+  }
+  .category-icon{
+    flex-shrink:0;
+    width:38px;height:38px;
+    border-radius:50%;
+    background:var(--paper-deep);
+    display:flex;align-items:center;justify-content:center;
+    font-size:20px;
+  }
+  .category-btn.active .category-icon{
+    background:rgba(255,255,255,0.2);
+  }
+  .category-label{
+    font-size:14px;
+    font-weight:700;
+    color:var(--wine-deep);
+    letter-spacing:0.03em;
+    line-height:1.4;
+  }
+  .category-chevron{
+    margin-left:auto;
+    font-size:12px;
+    color:var(--ink-soft);
+    transition:transform .2s ease;
+    flex-shrink:0;
+  }
+  .category-btn.active .category-chevron{
+    color:#fff;
+    transform:rotate(180deg);
+  }
+
+  .subcategory-panel{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .3s ease;
+  }
+  .subcategory-panel.open{
+    max-height:400px;
+  }
+  .subcategory-inner{
+    background:var(--paper-deep);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:12px;
+    margin-top:10px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .subcategory-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:10px 12px;
+    text-decoration:none;
+    color:var(--ink);
+    font-size:13.5px;
+    font-weight:600;
+    transition:background .15s ease, transform .15s ease;
+  }
+  .subcategory-item:active{ transform:scale(0.98); background:#F5F0E4; }
+  .subcategory-item .sub-icon{
+    font-size:16px;
+    flex-shrink:0;
+  }
+  .subcategory-item .sub-arrow{
+    margin-left:auto;
+    color:var(--gold);
+    font-size:13px;
+  }
+
+  .divider{
+    display:flex;align-items:center;gap:14px;
+    padding:22px 40px;
+    color:var(--gold);
+  }
+  .divider::before,.divider::after{
+    content:"";flex:1;height:1px;
+    background:linear-gradient(to right, transparent, var(--line), transparent);
+  }
+  .divider span{font-size:12px;letter-spacing:0.3em;}
+
+  .divider.section-title{ padding:30px 30px 18px; }
+  .divider.section-title span{
+    font-size:24px;
+    font-weight:700;
+    letter-spacing:0.15em;
+    color:var(--wine-deep);
+    font-family:"Noto Serif TC", serif;
+  }
+
+  .event-posters{
+    padding:0 22px 10px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .poster-subtitle{
+    text-align:center;
+    font-size:16px;
+    font-weight:700;
+    color:var(--wine-deep);
+    letter-spacing:0.1em;
+    margin-top:10px;
+    margin-bottom:8px;
+  }
+  .poster-name-row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin-top:20px;
+    flex-wrap: wrap;
+  }
+  .poster-name{
+    text-align:center;
+    font-size:20px;
+    font-weight:700;
+    color:var(--wine-deep);
+    letter-spacing:0.08em;
+  }
+  .badge-points{
+    display:inline-block;
+    background:var(--coral);
+    color:#fff;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:0.05em;
+    padding:5px 14px;
+    border-radius:999px;
+    white-space:nowrap;
+    box-shadow:0 4px 10px rgba(240,128,107,0.3);
+  }
+  .event-posters img{
+    width:100%;
+    display:block;
+    border-radius:4px;
+    box-shadow:0 20px 40px -16px rgba(46,58,59,0.35);
+    margin-bottom:22px;
+  }
+  .poster-placeholder{
+    width:100%;
+    aspect-ratio:4/3;
+    border-radius:4px;
+    margin-bottom:22px;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ink-soft);
+    font-size:13px;
+    letter-spacing:0.1em;
+    background:repeating-linear-gradient(45deg, var(--paper-deep), var(--paper-deep) 10px, var(--paper) 10px, var(--paper) 20px);
+    border:1px dashed var(--line);
+  }
+
+  .intro{
+    padding:8px 34px 10px;
+    text-align:center;
+  }
+  .intro .tag{
+    display:inline-block;
+    font-size:13px;
+    letter-spacing:0.25em;
+    color:#7A7660;
+    border:1px solid var(--line);
+    padding:6px 16px;
+    border-radius:999px;
+    margin-bottom:18px;
+  }
+  .intro .lead{
+    font-size:18px;
+    color:var(--wine-deep);
+    font-weight:700;
+    line-height:1.95;
+    margin-bottom:22px;
+    background: rgba(231, 222, 201, 0.4);
+    padding: 18px 20px;
+    border-radius: 8px;
+    border-left: 3px solid var(--gold);
+    border-right: 3px solid var(--gold);
+    text-align: justify;
+  }
+
+  .planners{
+    text-align:left;
+    background:var(--paper-deep);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:22px 22px 6px;
+    margin-bottom:26px;
+  }
+  .planners-title{
+    text-align:center;
+    font-size:14px;
+    letter-spacing:0.3em;
+    color:var(--wine);
+    margin-bottom:18px;
+    font-weight:700;
+  }
+  .planner{
+    padding-bottom:16px;
+    margin-bottom:16px;
+    border-bottom:1px dashed var(--line);
+  }
+  .planner:last-child{
+    border-bottom:none;
+    margin-bottom:0;
+    padding-bottom:2px;
+  }
+  .planner-name{
+    font-size:16px;
+    font-weight:700;
+    color:var(--wine-deep);
+    margin-bottom:8px;
+    letter-spacing:0.03em;
+  }
+  .planner-desc{
+    font-size:13.5px;
+    line-height:1.9;
+    color:var(--ink-soft);
+    text-align:left;
+  }
+
+  .highlights{
+    text-align:left;
+    background:#FFF;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:20px 20px 8px;
+    margin-bottom:26px;
+  }
+  .highlights-title{
+    text-align:center;
+    font-size:14px;
+    letter-spacing:0.3em;
+    color:var(--wine);
+    margin-bottom:16px;
+    font-weight:700;
+  }
+  .highlight-item{
+    display:flex;
+    gap:12px;
+    padding-bottom:14px;
+    margin-bottom:14px;
+    border-bottom:1px dashed var(--line);
+  }
+  .highlight-item:last-child{
+    border-bottom:none;
+    margin-bottom:0;
+    padding-bottom:2px;
+  }
+  .highlight-num{
+    flex-shrink:0;
+    width:26px;height:26px;
+    border-radius:50%;
+    background:var(--wine);
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:13px;
+    font-weight:700;
+    font-family:"Cormorant Garamond", serif;
+  }
+  .highlight-text{
+    font-size:13.5px;
+    line-height:1.85;
+    color:var(--ink-soft);
+  }
+  .highlight-text b{ color:var(--wine-deep); }
+
+  .cta{
+    margin:36px 22px 10px;
+    background:var(--wine-deep);
+    color:var(--paper);
+    border-radius:8px;
+    padding:38px 28px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .cta::before{
+    content:"";
+    position:absolute;
+    inset:8px;
+    border:1px solid rgba(244,237,225,0.25);
+    border-radius:4px;
+    pointer-events:none;
+  }
+  .cta .cta-eyebrow{
+    font-family:"Cormorant Garamond", serif;
+    font-style:italic;
+    font-size:15px;
+    letter-spacing:0.08em;
+    color:#FFB8A3;
+    margin-bottom:10px;
+  }
+  .cta h3{
+    font-size:22px;
+    line-height:1.9;
+    font-weight:700;
+    margin-bottom:22px;
+  }
+  .cta h3 .highlight{ color:#FFB8A3; }
+  .cta-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--coral);
+    color:#fff;
+    font-weight:700;
+    font-size:16px;
+    letter-spacing:0.05em;
+    padding:14px 34px;
+    border-radius:999px;
+    text-decoration:none;
+    box-shadow:0 10px 24px -8px rgba(224,101,79,0.5);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .cta-btn:active{transform:scale(0.97);}
+  .cta .note{
+    margin-top:16px;
+    font-size:12.5px;
+    color:#CBC2A0;
+    letter-spacing:0.05em;
+  }
+
+  /* SIGNUP FORM STYLES */
+  .signup{ padding:6px 22px 40px; }
+  .signup-card{
+    background:var(--paper-deep);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:26px 22px;
+  }
+  .signup-section-title{
+    font-size:16px;
+    font-weight:700;
+    color:var(--wine-deep);
+    letter-spacing:0.05em;
+    margin-bottom:16px;
+    padding-bottom:8px;
+    border-bottom:1px dashed var(--line);
+  }
+  .event-summary-box{
+    background:#FFF;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:16px;
+    margin-bottom:20px;
+    font-size:14px;
+    line-height:1.8;
+  }
+  .event-summary-box b{ color:var(--wine-deep); }
+  .field{ margin-bottom:16px; }
+  .field label{
+    display:block;
+    font-size:13.5px;
+    color:var(--ink);
+    margin-bottom:6px;
+    font-weight:600;
+  }
+  .field input,
+  .field select,
+  .field textarea{
+    width:100%;
+    font-family:"Noto Serif TC", serif;
+    font-size:14.5px;
+    color:var(--ink);
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:5px;
+    padding:10px 12px;
+    outline:none;
+  }
+  .field input[type="radio"],
+  .field input[type="checkbox"]{
+    width:auto;
+    flex-shrink:0;
+    border:none;
+    padding:0;
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus{ border-color:var(--wine); }
+  .radio-group{
+    display:flex;
+    gap:16px;
+    margin-top:6px;
+    flex-wrap:wrap;
+  }
+  .radio-group label{
+    font-weight:normal;
+    font-size:14px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .field-hint{
+    font-size:12px;
+    color:var(--wine);
+    margin-top:4px;
+  }
+  .sub-card{
+    background:#FAF7EF;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:16px;
+    margin-bottom:16px;
+  }
+
+  /* 基隆鮮買加購區（獨立預購專區） */
+  .preorder-standalone{
+    margin:0 22px 30px;
+    background:var(--wine-deep);
+    border-radius:12px;
+    padding:26px 22px;
+    text-align:center;
+    color:#fff;
+  }
+  .preorder-standalone-title{
+    font-size:19px;
+    font-weight:700;
+    letter-spacing:0.05em;
+    margin-bottom:8px;
+  }
+  .preorder-standalone-desc{
+    font-size:12.5px;
+    line-height:1.8;
+    color:rgba(255,255,255,0.85);
+    margin-bottom:18px;
+  }
+  .preorder-toggle-btn{
+    background:#7B2D3E;
+    color:#fff;
+    border:none;
+    border-radius:999px;
+    padding:13px 32px;
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:0.05em;
+    font-family:"Noto Serif TC", serif;
+    cursor:pointer;
+    box-shadow:0 8px 20px -6px rgba(0,0,0,0.4);
+    transition:transform .15s ease;
+  }
+  .preorder-toggle-btn:active{ transform:scale(0.97); }
+  .preorder-toggle-btn .chevron{
+    display:inline-block;
+    margin-left:6px;
+    transition:transform .2s ease;
+  }
+  .preorder-toggle-btn.open .chevron{
+    transform:rotate(180deg);
+  }
+  .preorder-content{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s ease;
+  }
+  .preorder-content.open{
+    max-height:3000px;
+    margin-top:20px;
+  }
+  .preorder-content-inner{
+    background:#fff;
+    border-radius:10px;
+    padding:18px 16px;
+    text-align:left;
+    color:var(--ink);
+  }
+  .preorder-hint{
+    background:rgba(63,167,144,0.12);
+    border:1px solid rgba(63,167,144,0.3);
+    border-radius:8px;
+    padding:10px 12px;
+    font-size:12px;
+    color:var(--wine-deep);
+    line-height:1.7;
+    margin-bottom:16px;
+    text-align:center;
+    font-weight:600;
+  }
+
+  .privacy-box{
+    font-size:12px;
+    color:var(--ink-soft);
+    line-height:1.6;
+    background:#fff;
+    border:1px solid var(--line);
+    padding:12px;
+    border-radius:5px;
+    max-height:160px;
+    overflow-y:auto;
+    margin-bottom:12px;
+  }
+  .signup-btn{
+    width:100%;
+    margin-top:12px;
+    background:var(--wine-deep);
+    color:var(--paper);
+    font-family:"Noto Serif TC", serif;
+    font-size:16px;
+    font-weight:700;
+    letter-spacing:0.05em;
+    border:none;
+    border-radius:999px;
+    padding:14px;
+    cursor:pointer;
+  }
+  .signup-btn:active{ opacity:0.85; }
+
+  /* CHECKOUT MODAL & MEMBER POINTS MODAL */
+  .modal-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+    z-index:999;
+    align-items:center;
+    justify-content:center;
+    padding:16px;
+  }
+  .modal-overlay.active{ display:flex; }
+  .checkout-card{
+    background:var(--paper);
+    border:1px solid var(--gold);
+    border-radius:8px;
+    max-width:560px;
+    width:100%;
+    max-height:90vh;
+    overflow-y:auto;
+    padding:24px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.3);
+  }
+  .checkout-title{
+    font-size:18px;
+    font-weight:700;
+    color:var(--wine-deep);
+    text-align:center;
+    margin-bottom:16px;
+    padding-bottom:10px;
+    border-bottom:2px solid var(--gold);
+  }
+  .price-highlight{
+    font-size:22px;
+    color:var(--wine);
+    font-weight:700;
+  }
+  .bank-box{
+    background:var(--paper-deep);
+    border:1px dashed var(--line);
+    border-radius:6px;
+    padding:14px;
+    margin:14px 0;
+    font-size:14px;
+    line-height:1.8;
+  }
+  .policy-box{
+    background:#FFF;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:14px;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    line-height:1.7;
+    margin-bottom:16px;
+  }
+  .policy-box b{ color:var(--wine-deep); }
+
+  footer{
+    text-align:center;
+    padding:20px 20px 50px;
+    font-size:12px;
+    letter-spacing:0.1em;
+    color:#8C8A70;
+  }
+</style>
+<script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 頂部導覽列 -->
+  <nav class="top-nav">
+    <a href="../" style="text-decoration:none;"><div class="nav-brand">Farm新食活動｜課程｜餐會</div></a>
+    <div class="nav-menu">
+      <a href="#signup-form" class="nav-item"><span>🛒</span> 購物車 <span class="cart-badge" id="nav-cart-count">1</span></a>
+      <button type="button" class="nav-item" onclick="openMemberPointsModal()"><span>🐾</span> 查詢會員點數</button>
+    </div>
+  </nav>
+
+  <!-- 全部課程分類按鈕（總覽入口，點擊直接跳轉） -->
+  <div class="category-menu">
+    <div class="category-menu-title">✦ 探索更多活動 ✦</div>
+    <div class="category-grid">
+      <a href="../keelung-market/#event-details" class="category-btn">
+        <div class="category-icon">🐟</div>
+        <div class="category-label">直擊市集</div>
+      </a>
+
+      <a href="#event-details" class="category-btn">
+        <div class="category-icon">🔪</div>
+        <div class="category-label">解魚秀｜板前料理</div>
+      </a>
+
+      <a href="#" class="category-btn">
+        <div class="category-icon">👩‍🍳</div>
+        <div class="category-label">料理與烘焙課程</div>
+      </a>
+
+      <a href="#" class="category-btn">
+        <div class="category-icon">🍵</div>
+        <div class="category-label">心靈雞湯餐會</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- 16:9 最上方橫幅影像（留空位，圖片就緒後放同資料夾即可自動載入） -->
+  <div class="hero">
+    <img class="banner-img" id="banner-img" alt="解魚秀 × 板前料理：從崁仔頂魚市到你的餐桌" style="display:none;" onload="this.style.display='block'; document.getElementById('hero-placeholder').style.display='none';">
+    <div class="hero-placeholder" id="hero-placeholder">主視覺 Banner 圖片準備中</div>
+  </div>
+
+  <div class="divider"><span>關於活動</span></div>
+
+  <div class="intro">
+    <div class="tag">達人帶路系列</div>
+
+    <div class="lead">
+      半夜跟著達人直擊魚市、尋覓鮮貨，當天下午接著看職人神級刀工，把整條魚變成極致美味！不只是「看師傅做菜」，而是帶你真正看懂一條魚的靈魂與價值。
+    </div>
+
+    <div class="planners">
+      <div class="planners-title">主理達人</div>
+
+      <div class="planner">
+        <div class="planner-name">日料主理人｜Marus 老師</div>
+        <p class="planner-desc">
+          深耕崁仔頂魚市場 5 年以上的實戰派，長年鑽研日式料理與魚貨處理，帶你看懂一條魚從市場到餐桌的完整旅程，用職人刀工示範最道地的板前手法。
+        </p>
+      </div>
+    </div>
+
+    <div class="highlights">
+      <div class="highlights-title">現場精采亮點：職人解魚秀</div>
+
+      <div class="highlight-item">
+        <div class="highlight-num">1</div>
+        <div class="highlight-text"><b>去鱗去雜：</b>完整魚體處理關鍵細節。</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-num">2</div>
+        <div class="highlight-text"><b>開魚剖刀：</b>順應骨骼的俐落拆解工法。</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-num">3</div>
+        <div class="highlight-text"><b>部位解析：</b>劃分刺身、炙燒、煎煮最佳部位。</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-num">4</div>
+        <div class="highlight-text"><b>食材知識：</b>教你回家怎麼挑魚、怎麼處理最美味。</div>
+      </div>
+    </div>
+
+    <div class="highlights">
+      <div class="highlights-title">舌尖上的體驗：極鮮板前料理</div>
+      <div class="highlight-item" style="border-bottom:none; margin-bottom:0; padding-bottom:0;">
+        <div class="highlight-text">
+          共作小菜與簡易日料，把在崁仔頂看到的鮮甜，真正化為舌尖上的感動 ❤️<br><br>
+          <b>行程動線：</b>魚市場 ➔ 魚貨處理解析 ➔ 板前職人料理 ➔ 享用美味
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 活動標題與圖片區域 (活動內容錨點) -->
+  <div class="divider section-title" id="event-details"><span>08/16 場次</span></div>
+
+  <div class="event-posters">
+    <div class="poster-name-row">
+      <span class="poster-name">解魚秀 × 板前料理：從崁仔頂魚市到你的餐桌</span>
+      <span class="badge-points">得到貓幣 490 點</span>
+    </div>
+    <img id="poster-img-1" alt="解魚秀 × 板前料理" style="display:none;" onload="this.style.display='block'; document.getElementById('poster-placeholder-1').style.display='none';">
+    <div class="poster-placeholder" id="poster-placeholder-1">活動海報圖片準備中</div>
+  </div>
+
+  <!-- 基隆鮮買加購區（獨立預購專區，點擊按鈕展開） -->
+  <div class="preorder-standalone">
+    <div class="preorder-standalone-title">🐟 基隆鮮買加購區（預購）</div>
+    <div class="preorder-standalone-desc">
+      當天想帶鮮美魚貨或美味熟食回家與家人分享？現場特別開放預購外帶，數量有限，建議提前登記！取貨時間：當日 18:30 起現場自取。
+    </div>
+    <button type="button" class="preorder-toggle-btn" id="preorder-toggle-btn" onclick="togglePreorder()">
+      查看加購商品 <span class="chevron">▾</span>
+    </button>
+
+    <div class="preorder-content" id="preorder-content">
+      <div class="preorder-content-inner">
+        <div class="preorder-hint">🐾 您選購的加購商品，送出報名時會一起加入結帳金額</div>
+
+        <div class="sub-card">
+          <div class="signup-section-title" style="margin-bottom:12px; font-size:14.5px;">🐟 極鮮生鮮區</div>
+
+          <div class="field" style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:12px;">
+            <label style="margin-bottom:0; flex:1;">綜合生魚片・澎湃版（$480／份）</label>
+            <input type="number" id="preorder-sashimi-big" min="0" max="9" value="0" data-price="480" onchange="updatePreorderTotal()" style="width:70px; flex-shrink:0;">
+          </div>
+          <div class="field" style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:12px;">
+            <label style="margin-bottom:0; flex:1;">綜合生魚片・精緻版（$380／份）</label>
+            <input type="number" id="preorder-sashimi-small" min="0" max="9" value="0" data-price="380" onchange="updatePreorderTotal()" style="width:70px; flex-shrink:0;">
+          </div>
+          <div class="field" style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:12px;">
+            <label style="margin-bottom:0; flex:1;">鮮美味噌魚湯（$140／份，約 2 人份）</label>
+            <input type="number" id="preorder-soup" min="0" max="9" value="0" data-price="140" onchange="updatePreorderTotal()" style="width:70px; flex-shrink:0;">
+          </div>
+          <div class="field" style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:12px;">
+            <label style="margin-bottom:0; flex:1;">去骨魚片／魚菲力（$400／份，約 2～4 人份）</label>
+            <input type="number" id="preorder-fillet" min="0" max="9" value="0" data-price="400" onchange="updatePreorderTotal()" style="width:70px; flex-shrink:0;">
+          </div>
+          <div class="field" style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:12px;">
+            <label style="margin-bottom:0; flex:1;">鮮甜魚頭（$300／份，大魚會協助剁開）</label>
+            <input type="number" id="preorder-fishhead" min="0" max="9" value="0" data-price="300" onchange="updatePreorderTotal()" style="width:70px; flex-shrink:0;">
+          </div>
+          <div class="field" style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:0;">
+            <label style="margin-bottom:0; flex:1;">魚邊角肉・炒飯神器（$180／份，約 4 人份）</label>
+            <input type="number" id="preorder-scrap" min="0" max="9" value="0" data-price="180" onchange="updatePreorderTotal()" style="width:70px; flex-shrink:0;">
+          </div>
+
+          <div class="field" style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:14px; margin-bottom:0;">
+            <label style="margin-bottom:0; flex:1;">南美原裝超大白蝦（$290／盒，850g，30-40隻/kg）</label>
+            <input type="number" id="preorder-shrimp" min="0" max="9" value="0" data-price="290" onchange="updatePreorderTotal()" style="width:70px; flex-shrink:0;">
+          </div>
+        </div>
+
+        <div class="sub-card">
+          <div class="signup-section-title" style="margin-bottom:12px; font-size:14.5px;">🍱 即食美味熟食區</div>
+          <div class="field" style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:12px;">
+            <label style="margin-bottom:0; flex:1;">現炸紅糟鰻・大塊（$250／份，350-370g）</label>
+            <input type="number" id="preorder-eel-big" min="0" max="9" value="0" data-price="250" onchange="updatePreorderTotal()" style="width:70px; flex-shrink:0;">
+          </div>
+          <div class="field" style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:12px;">
+            <label style="margin-bottom:0; flex:1;">現炸紅糟鰻・特大塊（$250／份，300-320g）</label>
+            <input type="number" id="preorder-eel-xl" min="0" max="9" value="0" data-price="250" onchange="updatePreorderTotal()" style="width:70px; flex-shrink:0;">
+          </div>
+          <div class="field" style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:12px;">
+            <label style="margin-bottom:0; flex:1;">超嫩溫體豬多汁排骨酥（$250／份，370-400g）</label>
+            <input type="number" id="preorder-ribs" min="0" max="9" value="0" data-price="250" onchange="updatePreorderTotal()" style="width:70px; flex-shrink:0;">
+          </div>
+          <div class="field" style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:0;">
+            <label style="margin-bottom:0; flex:1;">牛蒡天婦羅（扁）（$120／份，350-370g）</label>
+            <input type="number" id="preorder-tempura" min="0" max="9" value="0" data-price="120" onchange="updatePreorderTotal()" style="width:70px; flex-shrink:0;">
+          </div>
+        </div>
+
+        <div class="field-hint" style="margin-bottom:20px;">※ 生鮮與熟食數量有限，售完為止；依登記順序優先保留。</div>
+
+        <!-- 選好商品後，兩條路徑擇一 -->
+        <div style="text-align:center; padding-top:16px; border-top:1px dashed var(--line);">
+          <div style="font-size:13px; color:var(--ink-soft); margin-bottom:14px;">選好想要的商品後，請選擇：</div>
+          <div id="preorder-choice-warning" style="display:none; background:#FDF0EE; border:1px solid var(--coral); border-radius:8px; padding:10px 12px; margin-bottom:12px; font-size:13px; color:var(--coral-deep); font-weight:600;">⚠️ 請先選擇至少一項加購商品，才能繼續</div>
+          <button type="button" class="signup-btn" style="margin-top:0; margin-bottom:10px;" onclick="goToFullSignup()">🍣 繼續報名解魚秀活動</button>
+          <button type="button" class="signup-btn" style="margin-top:0; background:#7B2D3E;" onclick="goToPurchaseOnly()">🛍️ 只購買加購商品</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 只購買加購商品：獨立簡易表單（不需活動報名資料） -->
+  <div class="preorder-standalone" id="purchase-only-section" style="display:none; background:#fff; border:2px solid var(--coral);">
+    <div style="text-align:left;">
+      <button type="button" onclick="backToPreorderChoice()" style="background:none; border:none; color:var(--wine-deep); font-size:13px; cursor:pointer; font-family:'Noto Serif TC', serif; padding:0; margin-bottom:14px;">‹ 返回選擇</button>
+    </div>
+    <div class="preorder-standalone-title" style="color:var(--coral-deep);">🛍️ 只購買加購商品</div>
+    <div class="preorder-standalone-desc" style="color:var(--ink-soft);">
+      留下您的聯絡資訊即可完成訂購，不需填寫活動報名相關資料。
+    </div>
+
+    <div class="preorder-content-inner" style="text-align:left;">
+      <div class="field">
+        <label for="po-line-display-name">LINE 顯示名稱</label>
+        <input type="text" id="po-line-display-name" readonly placeholder="開啟 LINE 後自動帶入" style="width:100%; font-family:'Noto Serif TC', serif; font-size:15px; color:var(--ink-soft); background:var(--paper-deep); border:1px solid var(--line); border-radius:5px; padding:11px 12px; outline:none;">
+      </div>
+      <div class="field">
+        <label for="po-name">姓名 *</label>
+        <input type="text" id="po-name" required>
+      </div>
+      <div class="field">
+        <label for="po-phone">電話 *</label>
+        <input type="tel" id="po-phone" required>
+      </div>
+      <div class="field" style="margin-bottom:0;">
+        <label for="po-email">Email *</label>
+        <input type="email" id="po-email" required>
+      </div>
+
+      <div class="signup-section-title" style="margin-top:20px;">您的購物清單</div>
+      <div class="sub-card" id="po-summary" style="font-size:13.5px; line-height:1.9;"></div>
+      <div class="field-hint" style="margin-bottom:16px;">若需宅配，請電洽 0920-090-616</div>
+
+      <div id="po-submit-warning" style="display:none; background:#FDF0EE; border:1px solid var(--coral); border-radius:8px; padding:10px 12px; margin-bottom:12px; font-size:13px; color:var(--coral-deep); font-weight:600;"></div>
+
+      <button type="button" class="signup-btn" id="po-submit-btn" style="background:#7B2D3E;" onclick="confirmPurchaseOnlySubmit()">確認送出</button>
+
+      <div id="po-after-submit" style="display:none; margin-top:12px;">
+        <div style="text-align:center; font-size:13.5px; color:var(--wine); margin-bottom:10px; font-weight:600;">
+          ✅ 訂購已送出！請留意 Email 確認信，匯款完畢後請截圖傳送給小編確認
+        </div>
+        <a href="https://lin.ee/OZW9VuL" target="_blank" class="signup-btn" style="background:#06C755; text-decoration:none; display:inline-block; text-align:center;">💬 開啟 LINE 傳送匯款截圖</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 報名表單區塊 -->
+  <div class="signup" id="signup-form">
+    <div class="signup-card">
+      <div class="signup-section-title">活動報名與費用資訊</div>
+
+      <div class="event-summary-box">
+        <div><b>活動名稱：</b>解魚秀 × 板前料理：從崁仔頂魚市到你的餐桌</div>
+        <div><b>活動日期：</b>2026 年 8 月 16 日（日）</div>
+        <div><b>活動時間：</b>16:00 - 19:00</div>
+        <div><b>活動地點：</b>喵老師工作室（新北市永和區中山路一段66號）</div>
+        <div><b>講師：</b>日料主理人 Marus 老師</div>
+        <div><b>活動費用：</b><span style="color:var(--wine); font-weight:700;">$980 / 人</span>（含講師費、當季食材費、活動保險、解魚秀實演、板前料理體驗）</div>
+      </div>
+
+      <form id="main-signup-form">
+        <!-- LINE 顯示名稱（自動帶入） -->
+        <div class="field">
+          <label for="line-display-name">LINE 顯示名稱</label>
+          <input type="text" id="line-display-name" readonly placeholder="開啟 LINE 後自動帶入" style="width:100%; font-family:'Noto Serif TC', serif; font-size:15px; color:var(--ink-soft); background:var(--paper-deep); border:1px solid var(--line); border-radius:5px; padding:11px 12px; outline:none;">
+        </div>
+
+        <!-- 選擇報名人數 -->
+        <div class="field" id="event-only-ticket">
+          <label for="ticket-count">選擇報名人數 *</label>
+          <div class="field-hint" style="margin-top:0; margin-bottom:8px; color:var(--wine-deep);">
+            🐾 每一位參加者最多可獲得 490 點貓幣，點數會依照各自填寫的電話號碼，分別保留在每個人自己的會員資料裡（不會集中在單一帳號）
+          </div>
+          <select id="ticket-count" name="ticket-count" onchange="updateParticipantForms()">
+            <option value="1">1 位 ($980)</option>
+            <option value="2">2 位 ($1,960)</option>
+            <option value="3">3 位 ($2,940)</option>
+            <option value="4">4 位 ($3,920)</option>
+            <option value="5">5 位 ($4,900)</option>
+            <option value="6">6 位 ($5,880)</option>
+            <option value="7">7 位 ($6,860)</option>
+            <option value="8">8 位 ($7,840)</option>
+          </select>
+          <div class="field-hint">※ 席次數量有限，依報名登記順序優先保留。</div>
+        </div>
+
+        <!-- 發票資訊 -->
+        <div class="signup-section-title" style="margin-top: 24px;">發票索取方式</div>
+        <div class="field">
+          <label>發票類型 *</label>
+          <div class="radio-group">
+            <label><input type="radio" name="invoice-type" value="donate" onclick="toggleInvoiceOptions()" checked> 捐贈發票</label>
+            <label><input type="radio" name="invoice-type" value="issue" onclick="toggleInvoiceOptions()"> 開立發票</label>
+          </div>
+        </div>
+
+        <div id="invoice-details" style="display:none;" class="sub-card">
+          <div class="field">
+            <label>發票聯式 *</label>
+            <div class="radio-group">
+              <label><input type="radio" name="invoice-format" value="2" onclick="toggleTaxId()" checked> 二聯式電子發票</label>
+              <label><input type="radio" name="invoice-format" value="3" onclick="toggleTaxId()"> 三聯式發票（需開立統編）</label>
+            </div>
+          </div>
+          <div id="tax-id-field" class="field" style="display:none; margin-bottom: 0;">
+            <label for="tax-id">統一編號 / 抬頭 *</label>
+            <input type="text" id="tax-id" placeholder="請輸入 8 位統一編號與公司抬頭">
+          </div>
+        </div>
+
+        <div class="signup-section-title" style="margin-top: 24px;">主報名者資料</div>
+
+        <!-- 主報名者欄位 -->
+        <div class="sub-card">
+          <div class="field">
+            <label for="p1-name">姓名 *</label>
+            <input type="text" id="p1-name" required>
+          </div>
+          <div class="field">
+            <label for="p1-phone">電話 *</label>
+            <input type="tel" id="p1-phone" required>
+          </div>
+          <div class="field">
+            <label for="p1-email">Email *</label>
+            <input type="email" id="p1-email" required>
+          </div>
+          <div id="event-only-insurance">
+            <div class="field">
+              <label for="p1-id">保險資料：身分證字號 *</label>
+              <input type="text" id="p1-id" required placeholder="請輸入身分證字號（投保平安險使用）">
+            </div>
+            <div class="field" style="margin-bottom:0;">
+              <label for="p1-dob">保險資料：西元出生年月日 *</label>
+              <input type="date" id="p1-dob" required>
+            </div>
+          </div>
+        </div>
+
+        <!-- 動態增加其他參加者 -->
+        <div id="additional-participants" class="event-only-block"></div>
+
+        <!-- 個資法保護聲明 -->
+        <div class="signup-section-title" style="margin-top: 20px;">個人資料保護聲明</div>
+        <div class="privacy-box">
+          本單位（好放心飲食行銷有限公司／達人帶路系列）依據個人資料保護法規定，蒐集、處理及利用您所提供之個人資料（包括姓名、電話、Email、身分證字號及出生年月日），僅限於本次「解魚秀 × 板前料理」活動之聯繫、身分確認、保險辦理、開立發票及會員點數累積使用，不會提供給第三方或用於其他用途。
+        </div>
+        <div class="field">
+          <label style="font-weight:normal; cursor:pointer; display:flex; align-items:flex-start; gap:8px;">
+            <input type="checkbox" id="privacy-agree" required style="width:auto; flex-shrink:0; margin-top:3px;">
+            <span>我已閱讀並同意上述個人資料保護聲明 *</span>
+          </label>
+        </div>
+
+        <!-- 行前須知 -->
+        <div id="event-only-notice">
+          <div class="signup-section-title" style="margin-top: 20px;">行前須知</div>
+          <div class="privacy-box">
+            <b>集合地點：</b>喵老師工作室（新北市永和區中山路一段66號）<br>
+            <b>活動時間：</b>2026 年 8 月 16 日（日）16:00 - 19:00<br><br>
+            <b>活動費用說明：</b>$980／人，含講師費、當季食材費、活動保險、解魚秀實演、板前料理體驗<br><br>
+            <b>建議攜帶：</b>輕便好活動的衣著、保鮮盒一個（300-500ml）、圍裙、水壺、環保袋或保冷袋（方便帶回預購鮮魚與熟食）<br><br>
+            <b>行程簡單說明：</b>集合 → 職人解魚秀實演（去鱗去雜、開魚剖刀、部位解析）→ 共作小菜與簡易日料 → 板前職人料理體驗 → 享用美味 → 賦歸<br><br>
+            <b>取貨提醒：</b>如有加購限量外帶／預購商品，請於當日 18:30 起現場自取。
+          </div>
+        </div>
+
+        <!-- 肖像使用同意調查 -->
+        <div id="event-only-portrait">
+          <div class="signup-section-title" style="margin-top: 20px;">活動側錄與肖像使用同意</div>
+
+          <div class="field">
+            <label>活動會進行側錄，是否願意將肖像作為本單位推廣文化活動之公開使用？ *</label>
+            <div class="radio-group">
+              <label><input type="radio" name="portrait-consent" value="yes" checked> 願意</label>
+              <label><input type="radio" name="portrait-consent" value="no"> 不願意</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>是否願意在影片中被標注（如姓名、社群帳號）？ *</label>
+            <div class="radio-group">
+              <label><input type="radio" name="tag-consent" value="yes" checked> 願意</label>
+              <label><input type="radio" name="tag-consent" value="no"> 不願意</label>
+            </div>
+          </div>
+
+          <div class="field-hint">※ 若勾選不同意，影像會做部分遮蔽處理。</div>
+        </div>
+
+        <!-- 活動前調查 -->
+        <div id="event-only-presurvey">
+          <div class="signup-section-title" style="margin-top: 20px;">活動前調查</div>
+
+          <div class="field">
+            <label for="info-source">您是從哪裡獲得這個活動資訊？</label>
+            <select id="info-source">
+              <option value="">請選擇</option>
+              <option value="line">LINE 官方帳號</option>
+              <option value="facebook">Facebook</option>
+              <option value="instagram">Instagram</option>
+              <option value="friend">朋友介紹</option>
+              <option value="other">其他</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>是否有海鮮過敏或飲食禁忌？</label>
+            <input type="text" id="allergy" placeholder="如無可不填">
+          </div>
+
+          <div class="field" style="margin-bottom:0;">
+            <label for="pre-course-note">課前溝通與期待</label>
+            <textarea id="pre-course-note" rows="4" placeholder="有任何想跟我們分享的期待或需求，都歡迎在這裡留言" style="width:100%; font-family:'Noto Serif TC', serif; font-size:15px; color:var(--ink); background:#fff; border:1px solid var(--line); border-radius:5px; padding:11px 12px; outline:none; resize:vertical;"></textarea>
+          </div>
+        </div>
+
+        <div class="privacy-box" style="margin-top:20px;">
+          感謝提供我們這些資訊，讓我們更了解您的期待與需求，希望能提供最道地、最精彩的解魚秀與板前料理體驗。期待很快見到大家，有任何課前需要溝通的部分都歡迎直接在 LINE 官方上留言給我們。
+        </div>
+
+        <button type="button" class="signup-btn" onclick="openCheckout()">前往結帳與確認金額</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    © 達人帶路系列｜解魚秀 × 板前料理。All Rights Reserved.
+  </footer>
+
+</div>
+
+<!-- 查詢會員點數 / 貓幣 Modal -->
+<div class="modal-overlay" id="member-points-modal">
+  <div class="checkout-card">
+    <div class="checkout-title">🐾 會員點數（貓幣）查詢</div>
+
+    <div style="font-size:14.5px; line-height:1.8; margin-bottom:16px;" id="member-points-content">
+      <div style="text-align:center; color:var(--ink-soft);">查詢中…</div>
+    </div>
+
+    <div class="bank-box" style="font-size:13px; margin:10px 0;">
+      <div style="font-weight:700; color:var(--wine-deep); margin-bottom:4px;">【貓幣使用與累積說明】</div>
+      • 參加「達人帶路」系列活動，每報名 1 位即可獲得 490 點貓幣。<br>
+      • 貓幣可用於後續活動折抵或精選禮品兌換。<br>
+      • 限會員本人報名時累積至個人帳號。
+    </div>
+
+    <button type="button" class="signup-btn" onclick="closeMemberPointsModal()">關閉視窗</button>
+  </div>
+</div>
+
+<!-- 結帳與匯款資訊 Modal -->
+<div class="modal-overlay" id="checkout-modal">
+  <div class="checkout-card">
+    <div class="checkout-title">確認報名金額與付款資訊</div>
+
+    <div style="margin-bottom: 16px; font-size:15px; line-height:1.8;">
+      <div><b>報名場次：</b>解魚秀 × 板前料理：從崁仔頂魚市到你的餐桌</div>
+      <div><b>報名人數：</b><span id="summary-count">1</span> 位</div>
+      <div><b>貓幣回饋：</b><span id="summary-coins">490</span> 點</div>
+      <div style="margin-top:6px;"><b>活動費用小計：</b><span id="summary-event-total">$980</span></div>
+      <div id="summary-preorder-row" style="display:none;"><b>預購商品小計：</b><span id="summary-preorder-total">$0</span></div>
+      <div style="margin-top: 6px;"><b>結帳總金額：</b><span class="price-highlight" id="summary-total">$980</span></div>
+      <div style="margin-top:4px; font-size:12.5px; color:var(--ink-soft);">※ 熟食區品項價格請洽 LINE@ 或現場，不列入此結帳金額</div>
+    </div>
+
+    <!-- 匯款帳號 -->
+    <div class="bank-box">
+      <div style="font-weight:700; color:var(--wine-deep); margin-bottom:4px;">【銀行匯款帳戶】</div>
+      <div><b>銀行名稱：</b>008 華南銀行 永和分行</div>
+      <div><b>戶名：</b>好放心飲食行銷有限公司</div>
+      <div><b>帳號：</b>164101300006</div>
+    </div>
+
+    <!-- 退費說明 -->
+    <div class="policy-box">
+      <div style="font-weight:700; color:var(--wine-deep); margin-bottom:6px;">【取消與退費說明】</div>
+      • <b>活動前七日（不含當天）取消：</b>全額退費（扣除轉帳手續費）<br>
+      • <b>活動前五日（不含當天）取消：</b>退回 50%（扣除轉帳手續費）<br>
+      • <b>活動前三日（不含當天）取消：</b>退回 30%（扣除轉帳手續費）<br>
+      • <b>活動當天取消：</b>退回 15%（扣除轉帳手續費）
+    </div>
+
+    <div style="text-align:center; font-size:13.5px; color:var(--wine); margin-bottom:16px; font-weight:600;">
+      ※ 請先按下方「確認送出報名」，系統確認後再匯款並傳送截圖
+    </div>
+
+    <button type="button" class="signup-btn" id="submit-registration-btn" onclick="confirmSubmit()">確認送出報名</button>
+
+    <div id="after-submit-actions" style="display:none; margin-top:12px;">
+      <div style="text-align:center; font-size:13.5px; color:var(--wine); margin-bottom:10px; font-weight:600;">
+        ✅ 報名已送出！匯款完畢後，請按下方按鈕截圖傳送給小編確認
+      </div>
+      <a href="https://lin.ee/Re5GAOC" target="_blank" class="signup-btn" style="background:#06C755; text-decoration:none; display:inline-block; text-align:center;">💬 開啟 LINE 傳送匯款截圖</a>
+    </div>
+
+    <button type="button" class="signup-btn" style="background:var(--ink-soft); margin-top:8px;" onclick="closeCheckout()">返回修改資料</button>
+  </div>
+</div>
+
+<script>
+  // 圖片載入修正版：同一資料夾內只要檔名正確，即使副檔名不同也會自動嘗試載入。
+  function loadLocalImage(elementId, baseName) {
+    const img = document.getElementById(elementId);
+    const extensions = ['', '.png', '.jpg', '.jpeg', '.webp', '.PNG', '.JPG', '.JPEG', '.WEBP'];
+    let index = 0;
+
+    function tryNext() {
+      if (index >= extensions.length) {
+        console.warn('找不到圖片：', baseName);
+        return;
+      }
+      const path = './' + baseName + extensions[index++];
+      const test = new Image();
+      test.onload = function () { img.src = path; };
+      test.onerror = tryNext;
+      test.src = path;
+    }
+    tryNext();
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // 之後把對應圖片放進同一資料夾，檔名符合以下設定即可自動顯示：
+    loadLocalImage('banner-img', 'banner');
+    loadLocalImage('poster-img-1', 'poster');
+  });
+</script>
+
+<script>
+  // 基隆鮮買加購區：點擊按鈕展開/收合
+  function togglePreorder() {
+    const content = document.getElementById('preorder-content');
+    const btn = document.getElementById('preorder-toggle-btn');
+    const isOpen = content.classList.contains('open');
+
+    if (isOpen) {
+      content.classList.remove('open');
+      btn.classList.remove('open');
+      btn.innerHTML = '查看加購商品 <span class="chevron">▾</span>';
+    } else {
+      content.classList.add('open');
+      btn.classList.add('open');
+      btn.innerHTML = '收合加購商品 <span class="chevron">▾</span>';
+    }
+  }
+
+  // 選好加購商品後，繼續走完整報名流程
+  function goToFullSignup() {
+    document.getElementById('purchase-only-section').style.display = 'none';
+    document.getElementById('signup-form').style.display = '';
+    document.getElementById('signup-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // 選好加購商品後，只想購買不參加活動
+  function goToPurchaseOnly() {
+    const items = collectPreorderItems();
+    const warningEl = document.getElementById('preorder-choice-warning');
+
+    if (items.length === 0) {
+      warningEl.style.display = 'block';
+      warningEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    warningEl.style.display = 'none';
+
+    const total = calcPreorderTotal();
+    const summaryEl = document.getElementById('po-summary');
+    summaryEl.innerHTML = items.map(i => `<div>・${i}</div>`).join('') +
+      `<div style="margin-top:8px; padding-top:8px; border-top:1px dashed var(--line); font-weight:700; color:var(--wine-deep);">加購小計：$${total.toLocaleString()}</div>`;
+
+    document.getElementById('po-line-display-name').value = lineDisplayName || '';
+
+    document.getElementById('signup-form').style.display = 'none';
+    document.getElementById('purchase-only-section').style.display = 'block';
+    document.getElementById('purchase-only-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // 從「只購買加購商品」表單返回加購區重新選擇
+  function backToPreorderChoice() {
+    document.getElementById('purchase-only-section').style.display = 'none';
+    document.getElementById('signup-form').style.display = '';
+    document.getElementById('preorder-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // 送出「只購買加購商品」訂單
+  async function confirmPurchaseOnlySubmit() {
+    const name  = document.getElementById('po-name').value.trim();
+    const phone = document.getElementById('po-phone').value.trim();
+    const email = document.getElementById('po-email').value.trim();
+    const warningEl = document.getElementById('po-submit-warning');
+
+    if (!name || !phone || !email) {
+      warningEl.innerText = '⚠️ 請填寫姓名、電話、Email 後再送出。';
+      warningEl.style.display = 'block';
+      warningEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    const items = collectPreorderItems();
+    if (items.length === 0) {
+      warningEl.innerText = '⚠️ 目前沒有任何加購商品，請返回選擇後再送出。';
+      warningEl.style.display = 'block';
+      warningEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    warningEl.style.display = 'none';
+
+    const btn = document.getElementById('po-submit-btn');
+    const originalText = btn.innerText;
+    btn.innerText = '送出中…請稍候';
+    btn.disabled = true;
+
+    const payload = {
+      action:        'saveRegistration',
+      eventId:       'knifeshow001',
+      purchaseOnly:  true,
+      lineId:        lineUserId,
+      displayName:   lineDisplayName,
+      eventName:     '解魚秀 × 板前料理（僅加購商品，未參加活動）',
+      peopleCount:   0,
+      name:          name,
+      phone:         phone,
+      email:         email,
+      idCard:        '',
+      birthday:      '',
+      companions:    [],
+      companion2:    '',
+      companion3:    '',
+      companion4:    '',
+      participants:  [],
+      preorderItems: items,
+      preorderTotal: calcPreorderTotal(),
+      invoiceType:   '',
+      taxIdAndTitle: '',
+      allergy:       '',
+      infoSource:    '',
+      preCourseNote: '',
+      portraitConsent: '',
+      tagConsent:      '',
+    };
+
+    try {
+      const res = await fetch(WEBAPP_URL, {
+        method: 'POST',
+        body: JSON.stringify(payload),
+      });
+      const result = await res.json();
+
+      if (result.status === 'success') {
+        btn.style.display = 'none';
+        document.getElementById('po-after-submit').style.display = 'block';
+      } else {
+        warningEl.innerText = '⚠️ 送出時發生問題：' + (result.message || '請稍後再試或聯繫小編');
+        warningEl.style.display = 'block';
+        btn.innerText = originalText;
+        btn.disabled = false;
+      }
+    } catch (err) {
+      warningEl.innerText = '⚠️ 網路連線異常，請稍後再試，或直接透過 LINE 官方帳號聯繫小編完成訂購。';
+      warningEl.style.display = 'block';
+      console.error(err);
+      btn.innerText = originalText;
+      btn.disabled = false;
+    }
+  }
+
+  function toggleInvoiceOptions() {
+    const isIssue = document.querySelector('input[name="invoice-type"][value="issue"]').checked;
+    document.getElementById('invoice-details').style.display = isIssue ? 'block' : 'none';
+  }
+
+  // 切換三聯式發票統編欄位
+  function toggleTaxId() {
+    const isFormat3 = document.querySelector('input[name="invoice-format"][value="3"]').checked;
+    document.getElementById('tax-id-field').style.display = isFormat3 ? 'block' : 'none';
+  }
+
+  // 動態增減參加者表單 (最多 4 位)
+  function updateParticipantForms() {
+    const count = parseInt(document.getElementById('ticket-count').value);
+    document.getElementById('nav-cart-count').innerText = count;
+
+    const container = document.getElementById('additional-participants');
+    container.innerHTML = '';
+
+    for (let i = 2; i <= count; i++) {
+      const card = document.createElement('div');
+      card.className = 'sub-card';
+      card.innerHTML = `
+        <div class="signup-section-title" style="margin-bottom:12px; font-size:14.5px;">參加者 ${i} 資料</div>
+        <div class="field">
+          <label for="p${i}-name">姓名 *</label>
+          <input type="text" id="p${i}-name" required placeholder="請輸入參加者 ${i} 姓名">
+        </div>
+        <div class="field">
+          <label for="p${i}-phone">電話 *</label>
+          <input type="tel" id="p${i}-phone" required placeholder="請輸入參加者 ${i} 電話">
+        </div>
+        <div class="field">
+          <label for="p${i}-email">Email *</label>
+          <input type="email" id="p${i}-email" required placeholder="請輸入參加者 ${i} Email">
+        </div>
+        <div class="field">
+          <label for="p${i}-id">保險資料：身分證字號 *</label>
+          <input type="text" id="p${i}-id" required placeholder="請輸入身分證字號">
+        </div>
+        <div class="field" style="margin-bottom:0;">
+          <label for="p${i}-dob">保險資料：西元出生年月日 *</label>
+          <input type="date" id="p${i}-dob" required>
+        </div>
+      `;
+      container.appendChild(card);
+    }
+  }
+
+  // 開啟 / 關閉會員點數 Modal
+  async function openMemberPointsModal() {
+    document.getElementById('member-points-modal').classList.add('active');
+    const content = document.getElementById('member-points-content');
+    content.innerHTML = '<div style="text-align:center; color:var(--ink-soft);">查詢中…</div>';
+
+    if (!lineUserId) {
+      content.innerHTML = '<div style="text-align:center; color:var(--ink-soft);">請在 LINE 內開啟本頁面才能查詢會員點數</div>';
+      return;
+    }
+
+    try {
+      const res = await fetch(WEBAPP_URL, {
+        method: 'POST',
+        body: JSON.stringify({ action: 'checkMember', lineId: lineUserId }),
+      });
+      const data = await res.json();
+
+      if (!data.exists) {
+        content.innerHTML = '<div style="text-align:center; color:var(--ink-soft);">尚未查詢到會員資料，完成第一次報名或購物後即可累積點數</div>';
+        return;
+      }
+
+      const phoneStr = data.phone ? data.phone.toString() : '';
+      const maskedPhone = phoneStr.length >= 6
+        ? phoneStr.slice(0, 4) + '**' + phoneStr.slice(6)
+        : (phoneStr || '－');
+
+      content.innerHTML = `
+        <div><b>會員姓名：</b>${data.name || data.displayName || '－'}</div>
+        <div><b>綁定電話：</b>${maskedPhone}</div>
+        <div><b>目前累積貓幣：</b><span class="price-highlight">${data.remainPoints || 0} 點</span></div>
+      `;
+    } catch (err) {
+      content.innerHTML = '<div style="text-align:center; color:var(--wine);">查詢失敗，請稍後再試</div>';
+      console.error(err);
+    }
+  }
+
+  function closeMemberPointsModal() {
+    document.getElementById('member-points-modal').classList.remove('active');
+  }
+
+  // 計算預購商品小計（僅計算有標價的品項；熟食區價格請洽詢，不計入）
+  function calcPreorderTotal() {
+    const ids = ['preorder-sashimi-big', 'preorder-sashimi-small', 'preorder-soup', 'preorder-fillet', 'preorder-fishhead', 'preorder-scrap', 'preorder-shrimp', 'preorder-eel-big', 'preorder-eel-xl', 'preorder-ribs', 'preorder-tempura'];
+    let total = 0;
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const qty = parseInt(el.value) || 0;
+      const price = parseInt(el.dataset.price) || 0;
+      total += qty * price;
+    });
+    return total;
+  }
+
+  function updatePreorderTotal() {
+    // 供輸入變動時即時反應（目前於結帳時統一計算，此函式保留供未來即時顯示擴充使用）
+  }
+
+  // 開啟結帳 Modal 試算金額
+  function openCheckout() {
+    const form = document.getElementById('main-signup-form');
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const count = parseInt(document.getElementById('ticket-count').value);
+    const eventTotal = count * 980;
+    const coins = count * 490;
+    const preorderTotal = calcPreorderTotal();
+    const grandTotal = eventTotal + preorderTotal;
+
+    document.getElementById('summary-count').innerText = count;
+    document.getElementById('summary-event-total').innerText = '$' + eventTotal.toLocaleString();
+    document.getElementById('summary-coins').innerText = coins.toLocaleString();
+    document.getElementById('summary-total').innerText = '$' + grandTotal.toLocaleString();
+
+    const preorderRow = document.getElementById('summary-preorder-row');
+    if (preorderTotal > 0) {
+      document.getElementById('summary-preorder-total').innerText = '$' + preorderTotal.toLocaleString();
+      preorderRow.style.display = 'block';
+    } else {
+      preorderRow.style.display = 'none';
+    }
+
+    document.getElementById('checkout-modal').classList.add('active');
+  }
+
+  function closeCheckout() {
+    document.getElementById('checkout-modal').classList.remove('active');
+  }
+
+  // 後端 Apps Script 網址
+  const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbxy4c5tFj4lIWG2cQGTf2MvoE9HZvHGwdqp28elN60uxlS-jjSfKF7W5LbKSoECxZlv/exec';
+
+  // ══════════════════════════════════════
+  //  LIFF：取得 LINE 使用者 ID 與顯示名稱
+  // ══════════════════════════════════════
+  const LIFF_ID = '2011023659-GrRRa1jW';
+  let lineUserId = '';
+  let lineDisplayName = '';
+
+  async function initLiff() {
+    try {
+      await liff.init({ liffId: LIFF_ID });
+      if (!liff.isLoggedIn()) {
+        liff.login();
+        return;
+      }
+      const profile = await liff.getProfile();
+      lineUserId = profile.userId;
+      lineDisplayName = profile.displayName;
+
+      const nameField = document.getElementById('line-display-name');
+      if (nameField) nameField.value = lineDisplayName;
+      // 注意：報名姓名欄位（p1-name）不自動帶入 LINE 顯示名稱，
+      // 因為投保平安險需要身分證上的真實全名，必須由使用者手動填寫
+    } catch (err) {
+      console.warn('LIFF 初始化失敗，可能是在一般瀏覽器開啟（非 LINE 內開啟）：', err);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initLiff);
+
+  // 收集所有參加者的姓名/電話/Email（結構化清單，供後端各自計算點數用）
+  function collectParticipantsList(count) {
+    const list = [];
+    for (let i = 1; i <= count; i++) {
+      const nameEl = document.getElementById('p' + i + '-name');
+      if (!nameEl) continue;
+      const name  = nameEl.value || '';
+      const phone = document.getElementById('p' + i + '-phone').value || '';
+      const email = document.getElementById('p' + i + '-email') ? document.getElementById('p' + i + '-email').value : '';
+      if (!name && !phone) continue;
+      list.push({ name: name, phone: phone, email: email });
+    }
+    return list;
+  }
+
+  // 收集同行者資料（將姓名/電話/Email/身分證/生日合併成一個字串）
+  function collectCompanion(idx) {
+    const nameEl = document.getElementById('p' + idx + '-name');
+    if (!nameEl) return '';
+    const name  = nameEl.value || '';
+    const phone = document.getElementById('p' + idx + '-phone').value || '';
+    const email = document.getElementById('p' + idx + '-email').value || '';
+    const id    = document.getElementById('p' + idx + '-id').value || '';
+    const dob   = document.getElementById('p' + idx + '-dob').value || '';
+    if (!name) return '';
+    return `${name} / ${phone} / ${email} / ${id} / ${dob}`;
+  }
+
+  function collectRadioLabel(name) {
+    const el = document.querySelector(`input[name="${name}"]:checked`);
+    if (!el) return '';
+    return el.parentElement.textContent.trim();
+  }
+
+  // 收集限量外帶／預購區資料（主表單、純購買表單共用）
+  const PREORDER_QTY_MAP = {
+    'preorder-sashimi-big':   '綜合生魚片・澎湃版($480)',
+    'preorder-sashimi-small': '綜合生魚片・精緻版($380)',
+    'preorder-soup':          '鮮美味噌魚湯($140)',
+    'preorder-fillet':        '去骨魚片／魚菲力($400)',
+    'preorder-fishhead':      '鮮甜魚頭($300)',
+    'preorder-scrap':         '魚邊角肉($180)',
+    'preorder-shrimp':        '南美原裝超大白蝦($290)',
+    'preorder-eel-big':       '現炸紅糟鰻・大塊($250)',
+    'preorder-eel-xl':        '現炸紅糟鰻・特大塊($250)',
+    'preorder-ribs':          '超嫩溫體豬多汁排骨酥($250)',
+    'preorder-tempura':       '牛蒡天婦羅（扁）($120)',
+  };
+
+  function collectPreorderItems() {
+    const items = [];
+    Object.keys(PREORDER_QTY_MAP).forEach(id => {
+      const el = document.getElementById(id);
+      const qty = el ? (parseInt(el.value) || 0) : 0;
+      if (qty > 0) items.push(`${PREORDER_QTY_MAP[id]} x${qty}`);
+    });
+    return items;
+  }
+
+  function collectFormData() {
+    const count = parseInt(document.getElementById('ticket-count').value);
+
+    // 動態收集第 2 位起所有同行者資料（支援到報名人數上限）
+    const companions = [];
+    for (let i = 2; i <= count; i++) {
+      companions.push(collectCompanion(i));
+    }
+
+    const preorderItems = collectPreorderItems();
+
+    return {
+      action:         'saveRegistration',
+      eventId:        'knifeshow001',
+      purchaseOnly:   false,
+      lineId:         lineUserId,
+      displayName:    lineDisplayName,
+      eventName:      '解魚秀 × 板前料理：從崁仔頂魚市到你的餐桌',
+      peopleCount:    count,
+      name:           document.getElementById('p1-name').value,
+      phone:          document.getElementById('p1-phone').value,
+      email:          document.getElementById('p1-email').value,
+      idCard:         document.getElementById('p1-id').value,
+      birthday:       document.getElementById('p1-dob').value,
+      companions:     companions,
+      companion2:     companions[0] || '',
+      companion3:     companions[1] || '',
+      companion4:     companions[2] || '',
+      participants:   collectParticipantsList(count),
+      preorderItems:  preorderItems,
+      preorderTotal:  calcPreorderTotal(),
+      invoiceType:    collectRadioLabel('invoice-type'),
+      taxIdAndTitle:  document.getElementById('tax-id') ? document.getElementById('tax-id').value : '',
+      allergy:        document.getElementById('allergy').value,
+      infoSource:     document.getElementById('info-source').value,
+      preCourseNote:  document.getElementById('pre-course-note').value,
+      portraitConsent: collectRadioLabel('portrait-consent'),
+      tagConsent:      collectRadioLabel('tag-consent'),
+    };
+  }
+
+  async function confirmSubmit() {
+    const btn = document.getElementById('submit-registration-btn');
+    const originalText = btn.innerText;
+    btn.innerText = '送出中…請稍候';
+    btn.disabled = true;
+
+    try {
+      const payload = collectFormData();
+      const res = await fetch(WEBAPP_URL, {
+        method: 'POST',
+        body: JSON.stringify(payload),
+      });
+      const result = await res.json();
+
+      if (result.status === 'success') {
+        btn.style.display = 'none';
+        document.getElementById('after-submit-actions').style.display = 'block';
+      } else {
+        alert('報名送出時發生問題：' + (result.message || '請稍後再試或聯繫小編'));
+        btn.innerText = originalText;
+        btn.disabled = false;
+      }
+    } catch (err) {
+      alert('網路連線異常，請稍後再試，或直接透過 LINE 官方帳號聯繫小編完成報名。');
+      console.error(err);
+      btn.innerText = originalText;
+      btn.disabled = false;
+    }
+  }
+
+  // 點擊 Modal 外層遮罩關閉功能
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        overlay.classList.remove('active');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
