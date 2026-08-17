@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="心靈雞湯不說教：行業鬼故事大掃除｜Farm新食餐會報名">
+<title>心靈雞湯不說教｜Farm新食餐會</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+<style>
+  :root{
+    --paper:#FBF3EF;
+    --paper-deep:#F5E4DC;
+    --ink:#3A3530;
+    --ink-soft:#7A756D;
+    --wine:#3FA790;
+    --wine-deep:#2C7D6B;
+    --coral:#F0806B;
+    --coral-deep:#E0654F;
+    --gold:#F0806B;
+    --line:#EAD4C8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Noto Serif TC", serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(192,138,62,0.06), transparent 40%),
+      radial-gradient(circle at 80% 90%, rgba(44,110,99,0.08), transparent 45%);
+    pointer-events:none;
+    z-index:0;
+  }
+  .wrap{max-width:640px;margin:0 auto;position:relative;z-index:1;}
+
+  .poster-hero{
+    width:100%;
+  }
+  .poster-hero img{
+    width:100%;
+    display:block;
+  }
+  .poster-hero .poster-caption{
+    text-align:center;
+    font-size:11px;
+    letter-spacing:0.15em;
+    color:var(--ink-soft);
+    padding:8px 20px 0;
+  }
+
+  /* ---- Hero ---- */
+  .hero{
+    padding:52px 24px 30px;
+    text-align:center;
+  }
+  .hero .eyebrow{
+    font-family:"Cormorant Garamond", serif;
+    font-style:italic;
+    font-size:15px;
+    color:var(--coral-deep);
+    letter-spacing:0.25em;
+    margin-bottom:14px;
+  }
+  .hero h1{
+    font-size:26px;
+    font-weight:900;
+    color:var(--wine-deep);
+    letter-spacing:0.04em;
+    line-height:1.5;
+    margin-bottom:14px;
+  }
+  .hero .sub{
+    font-size:13px;
+    color:var(--ink-soft);
+    letter-spacing:0.08em;
+    line-height:1.9;
+  }
+
+  .divider{
+    display:flex;align-items:center;gap:14px;
+    padding:6px 40px 24px;
+    color:var(--gold);
+  }
+  .divider::before,.divider::after{
+    content:"";flex:1;height:1px;
+    background:linear-gradient(to right, transparent, var(--line), transparent);
+  }
+  .divider span{font-size:12px;letter-spacing:0.3em;}
+
+  /* ---- Story block ---- */
+  .story{
+    padding:0 26px 8px;
+  }
+  .story p{
+    font-size:15px;
+    line-height:2.1;
+    color:var(--ink);
+    margin-bottom:6px;
+  }
+  .story .lead{
+    font-weight:700;
+    color:var(--wine-deep);
+  }
+  .story .closing{
+    margin-top:18px;
+    color:var(--ink-soft);
+    font-size:14px;
+    line-height:2;
+  }
+
+  /* ---- Who it's for ---- */
+  .who{ padding:34px 20px 10px; }
+  .section-title{
+    font-size:13px;
+    letter-spacing:0.25em;
+    color:var(--ink-soft);
+    padding:0 4px 14px;
+  }
+  .who-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+  .who-card{
+    background:#FFFFFF;
+    border:1.5px solid var(--line);
+    border-radius:16px;
+    padding:14px;
+    box-shadow:0 4px 10px -4px rgba(46,58,59,0.10);
+  }
+  .who-card .icon{ font-size:20px; margin-bottom:6px; display:block; }
+  .who-card .label{
+    font-size:13px;
+    font-weight:700;
+    color:var(--wine-deep);
+    line-height:1.5;
+  }
+
+  /* ---- Info list ---- */
+  .info{ padding:34px 20px 10px; }
+  .info-card{
+    background:#FFFFFF;
+    border:1.5px solid var(--line);
+    border-radius:18px;
+    padding:22px 20px;
+    box-shadow:0 6px 16px -8px rgba(46,58,59,0.14);
+  }
+  .info-row{
+    display:flex;
+    gap:16px;
+    padding:12px 0;
+    border-bottom:1px dashed var(--line);
+  }
+  .info-row:last-child{ border-bottom:none; }
+  .info-row .k{
+    flex-shrink:0;
+    width:64px;
+    font-size:13px;
+    font-weight:700;
+    color:var(--coral-deep);
+    letter-spacing:0.1em;
+    padding-top:1px;
+  }
+  .info-row .v{
+    font-size:14px;
+    line-height:1.85;
+    color:var(--ink);
+  }
+  .info-row .v small{
+    display:block;
+    color:var(--ink-soft);
+    font-size:12.5px;
+    margin-top:2px;
+  }
+
+  /* ---- Host ---- */
+  .host{ padding:34px 20px 10px; }
+  .host-card{
+    display:flex;
+    gap:16px;
+    background:var(--paper-deep);
+    border-radius:18px;
+    padding:20px;
+  }
+  .host-avatar{
+    flex-shrink:0;
+    width:52px;height:52px;
+    border-radius:50%;
+    background:var(--wine-deep);
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:20px;font-weight:700;
+  }
+  .host-name{
+    font-size:15px;
+    font-weight:700;
+    color:var(--wine-deep);
+    margin-bottom:6px;
+  }
+  .host-bio{
+    font-size:13px;
+    line-height:1.9;
+    color:var(--ink-soft);
+  }
+
+  /* ---- Session picker ---- */
+  .sessions{ padding:34px 20px 10px; }
+  .session-list{ display:flex; flex-direction:column; gap:12px; }
+  .session-card{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    background:#FFFFFF;
+    border:2px solid var(--line);
+    border-radius:16px;
+    padding:16px 16px;
+    cursor:pointer;
+    transition:border-color .15s ease, box-shadow .15s ease, background .15s ease;
+    position:relative;
+  }
+  .session-card input{
+    position:absolute; opacity:0; pointer-events:none;
+  }
+  .session-card.selected{
+    border-color:var(--wine-deep);
+    background:#F4FBF9;
+    box-shadow:0 6px 16px -8px rgba(44,110,99,0.35);
+  }
+  .session-card.full{
+    opacity:0.55;
+    cursor:not-allowed;
+  }
+  .session-pot{
+    flex-shrink:0;
+    width:44px;height:44px;
+    border-radius:50%;
+    background:var(--paper-deep);
+    display:flex;align-items:center;justify-content:center;
+    font-size:19px;
+  }
+  .session-card.selected .session-pot{ background:var(--wine-deep); }
+  .session-main{ flex:1; }
+  .session-title{
+    font-size:14.5px;
+    font-weight:700;
+    color:var(--wine-deep);
+  }
+  .session-date{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    margin-top:2px;
+  }
+  .session-status{
+    font-size:11.5px;
+    letter-spacing:0.05em;
+    color:var(--coral-deep);
+    margin-top:4px;
+    font-weight:700;
+  }
+  .session-check{
+    flex-shrink:0;
+    width:22px;height:22px;
+    border-radius:50%;
+    border:2px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    font-size:12px;
+    color:#fff;
+  }
+  .session-card.selected .session-check{
+    border-color:var(--wine-deep);
+    background:var(--wine-deep);
+  }
+
+  /* ---- Form ---- */
+  .form-section{ padding:34px 20px 10px; }
+  .form-card{
+    background:#FFFFFF;
+    border:1.5px solid var(--line);
+    border-radius:18px;
+    padding:22px 20px 24px;
+    box-shadow:0 6px 16px -8px rgba(46,58,59,0.14);
+  }
+  .field{ margin-bottom:16px; }
+  .field label{
+    display:block;
+    font-size:12.5px;
+    font-weight:700;
+    color:var(--wine-deep);
+    letter-spacing:0.06em;
+    margin-bottom:7px;
+  }
+  .field .req{ color:var(--coral-deep); }
+  .field input, .field textarea{
+    width:100%;
+    border:1.5px solid var(--line);
+    border-radius:10px;
+    padding:11px 13px;
+    font-family:"Noto Serif TC", serif;
+    font-size:14px;
+    color:var(--ink);
+    background:var(--paper);
+    outline:none;
+    transition:border-color .15s ease;
+  }
+  .field input:focus, .field textarea:focus{
+    border-color:var(--wine-deep);
+  }
+  .field textarea{ resize:vertical; min-height:72px; }
+  .field-hint{
+    font-size:11.5px;
+    color:var(--ink-soft);
+    margin-top:5px;
+  }
+  .stepper{
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .stepper-btn{
+    width:36px;height:36px;
+    border-radius:10px;
+    border:1.5px solid var(--line);
+    background:var(--paper);
+    color:var(--wine-deep);
+    font-size:17px;
+    font-weight:700;
+    cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    transition:background .15s ease, border-color .15s ease;
+  }
+  .stepper-btn:active{ background:var(--paper-deep); }
+  .stepper-btn:disabled{
+    opacity:0.4;
+    cursor:not-allowed;
+  }
+  .stepper-val{
+    font-size:18px;
+    font-weight:700;
+    color:var(--wine-deep);
+    width:20px;
+    text-align:center;
+  }
+  .stepper-label{
+    font-size:12.5px;
+    color:var(--ink-soft);
+  }
+  .participant-block{
+    background:var(--paper);
+    border:1px dashed var(--line);
+    border-radius:12px;
+    padding:16px 14px 4px;
+    margin-bottom:16px;
+  }
+  .participant-title{
+    font-size:12.5px;
+    font-weight:700;
+    color:var(--coral-deep);
+    letter-spacing:0.08em;
+    margin-bottom:12px;
+  }
+  .helper-check{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:var(--paper-deep);
+    border:1.5px solid var(--line);
+    border-radius:10px;
+    padding:12px 14px;
+    cursor:pointer;
+    font-size:14px;
+    color:var(--ink);
+  }
+  .helper-check input{
+    width:18px;height:18px;
+    accent-color:var(--wine-deep);
+    flex-shrink:0;
+  }
+  .helper-check.disabled{
+    opacity:0.55;
+    cursor:not-allowed;
+  }
+  .radio-row{ display:flex; gap:10px; }
+  .radio-row.wrap{ flex-wrap:wrap; }
+  .radio-row.wrap .radio-opt{ flex:0 0 auto; padding:9px 14px; }
+  .line-status{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:#E8F5F0;
+    border:1px solid var(--wine-deep);
+    border-radius:10px;
+    padding:10px 14px;
+    margin-bottom:18px;
+    font-size:12.5px;
+    color:var(--wine-deep);
+    font-weight:700;
+  }
+  .field select{
+    width:100%;
+    border:1.5px solid var(--line);
+    border-radius:10px;
+    padding:11px 13px;
+    font-family:"Noto Serif TC", serif;
+    font-size:14px;
+    color:var(--ink);
+    background:var(--paper);
+    outline:none;
+  }
+  .confirm-slip{
+    text-align:left;
+    background:var(--paper-deep);
+    border:1px dashed var(--line);
+    border-radius:12px;
+    padding:16px 16px;
+    margin:18px 0;
+    font-size:13px;
+    line-height:2;
+    color:var(--ink);
+  }
+  .confirm-slip .row{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    border-bottom:1px dashed var(--line);
+    padding:6px 0;
+  }
+  .confirm-slip .row:last-child{ border-bottom:none; }
+  .confirm-slip .row .k{ color:var(--ink-soft); flex-shrink:0; }
+  .confirm-slip .row .v{ text-align:right; font-weight:600; color:var(--wine-deep); }
+  .confirm-note{
+    font-size:11.5px;
+    color:var(--ink-soft);
+    line-height:1.8;
+  }
+  .radio-opt{
+    flex:1;
+    text-align:center;
+    border:1.5px solid var(--line);
+    border-radius:10px;
+    padding:9px;
+    font-size:13px;
+    color:var(--ink-soft);
+    cursor:pointer;
+    position:relative;
+  }
+  .radio-opt input{ position:absolute; opacity:0; pointer-events:none; }
+  .radio-opt.selected{
+    border-color:var(--wine-deep);
+    color:var(--wine-deep);
+    font-weight:700;
+    background:#F4FBF9;
+  }
+
+  .submit-btn{
+    width:100%;
+    border:none;
+    border-radius:12px;
+    background:var(--wine-deep);
+    color:#fff;
+    font-family:"Noto Serif TC", serif;
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:0.1em;
+    padding:15px;
+    cursor:pointer;
+    margin-top:6px;
+    transition:transform .12s ease, background .15s ease;
+  }
+  .submit-btn:active{ transform:scale(0.98); }
+  .submit-btn:disabled{
+    background:#C7BDB5;
+    cursor:not-allowed;
+  }
+  .submit-note{
+    text-align:center;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    margin-top:10px;
+    line-height:1.7;
+  }
+  .error-msg{
+    font-size:12px;
+    color:var(--coral-deep);
+    margin-top:10px;
+    text-align:center;
+    display:none;
+  }
+
+  /* ---- Success state ---- */
+  .success{
+    display:none;
+    padding:0 20px;
+    text-align:center;
+  }
+  .success-card{
+    background:#FFFFFF;
+    border:1.5px solid var(--line);
+    border-radius:18px;
+    padding:36px 24px;
+    box-shadow:0 6px 16px -8px rgba(46,58,59,0.14);
+  }
+  .success-icon{ font-size:34px; margin-bottom:14px; }
+  .success h3{
+    color:var(--wine-deep);
+    font-size:17px;
+    margin-bottom:10px;
+  }
+  .success p{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    line-height:1.9;
+  }
+
+  footer{
+    text-align:center;
+    padding:40px 20px 50px;
+    font-size:12px;
+    letter-spacing:0.1em;
+    color:#8C8A70;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition:none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="poster-hero">
+    <img src="poster-pot001.jpg" alt="心靈雞湯不說教 行業鬼故事大掃除 第001鍋 2026.08.18（二）18:30">
+    <div class="poster-caption">第 001 鍋・2026.08.18（二）</div>
+  </div>
+
+  <div class="hero">
+    <div class="eyebrow">Farm新食 · 心靈雞湯餐會</div>
+    <h1>心靈雞湯不說教<br>行業鬼故事大掃除</h1>
+    <div class="sub">一碗熱湯，一段沒地方說的職場故事</div>
+  </div>
+
+  <div class="divider"><span>關於這場飯局</span></div>
+
+  <div class="story">
+    <p class="lead">最可怕的不是鬼，</p>
+    <p>是週五晚上客戶突然傳來：「在嗎？」</p>
+    <p>是提案改到第十版，最後只得到一句：「還是第一版好了。」</p>
+    <p>也是一人公司、小編與業務們，天天吞下的那些職場委屈。</p>
+    <p class="closing">
+      這一晚，不談 KPI、不講大道理，只邀請你一起吃碗雞湯，把那些荒謬、心累又無處訴說的「行業鬼故事」通通倒出來。一人分享一段故事，大家一起聽、一起笑、一起用熱湯壓驚。喝完好湯、倒完垃圾，明天繼續滿血復活。
+    </p>
+  </div>
+
+  <div class="who">
+    <div class="section-title">這一鍋，想送給</div>
+    <div class="who-grid">
+      <div class="who-card"><span class="icon">🏃</span><div class="label">業務高手<br>每天被客戶追著跑</div></div>
+      <div class="who-card"><span class="icon">🎩</span><div class="label">一人老闆<br>校長兼撞鐘</div></div>
+      <div class="who-card"><span class="icon">🎨</span><div class="label">小編<br>隨時待命改圖</div></div>
+      <div class="who-card"><span class="icon">👻</span><div class="label">任何<br>想聽鬼故事的你</div></div>
+    </div>
+  </div>
+
+  <div class="info">
+    <div class="section-title">活動資訊</div>
+    <div class="info-card">
+      <div class="info-row">
+        <div class="k">時間</div>
+        <div class="v">2026.08.18（二）
+          <small>18:30 入席・18:45 開桌・21:00 賦歸</small>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="k">地點</div>
+        <div class="v">新北市永和區中山路一段66號2樓</div>
+      </div>
+      <div class="info-row">
+        <div class="k">席次</div>
+        <div class="v">限定 7 席，可為自己與同行朋友一起報名</div>
+      </div>
+      <div class="info-row">
+        <div class="k">費用</div>
+        <div class="v">$880 / 人
+          <small>含稅、保險、內用餐點、療癒系伴手禮，餐點可外帶（請自備餐盒）</small>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="k">小幫手</div>
+        <div class="v">開放 2 位申請（1 正取＋1 備取），半價 $440
+          <small>工作內容：場地佈置・協助報到・說明活動・拍照記錄・結束後一起收拾場地</small>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="k">適合</div>
+        <div class="v">業務高手、一人公司老闆、小編、行銷人</div>
+      </div>
+      <div class="info-row">
+        <div class="k">公約</div>
+        <div class="v">真誠以待・無私分享・不強迫交換名片</div>
+      </div>
+      <div class="info-row">
+        <div class="k">亮點</div>
+        <div class="v">蔬果雞湯・鬼故事分享・以湯壓驚・垃圾封印・旺來酥品評</div>
+      </div>
+      <div class="info-row">
+        <div class="k">聯繫</div>
+        <div class="v">LINE ID：413vjwfv
+          <small>喵老師｜0920-090-616</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="host">
+    <div class="section-title">主辦人</div>
+    <div class="host-card">
+      <div class="host-avatar">喵</div>
+      <div>
+        <div class="host-name">喵老師</div>
+        <div class="host-bio">
+          三師背景、第五次創業，愛吃、愛煮、愛分享。20 歲開啟創業魂，曾旅居中美洲創業，在創業與社畜人生中遇過不少妖魔鬼怪。50+ 的目標是繼續推動永續、共好的各項活動，不只讓醜蔬果華麗轉身，也帶動正能量善的循環。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sessions">
+    <div class="section-title">場次</div>
+    <div class="session-list" id="sessionList">
+      <label class="session-card selected" data-session="pot001">
+        <input type="radio" name="session" value="pot001" checked>
+        <div class="session-pot">🍲</div>
+        <div class="session-main">
+          <div class="session-title">第 001 鍋</div>
+          <div class="session-date">2026.08.18（二）18:30 報到，18:45 開桌，約 21:00 結束</div>
+        </div>
+        <div class="session-check">✓</div>
+      </label>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="section-title">報名資料</div>
+    <div class="form-card">
+      <div class="line-status" id="lineStatus" style="display:none;"></div>
+      <form id="regForm">
+        <div class="field">
+          <label>報名人數 <span class="req">*</span></label>
+          <div class="stepper" id="countStepper">
+            <button type="button" class="stepper-btn" id="countMinus">－</button>
+            <div class="stepper-val" id="countVal">1</div>
+            <button type="button" class="stepper-btn" id="countPlus">＋</button>
+            <div class="stepper-label">人（含自己，最多 6 人）</div>
+          </div>
+        </div>
+
+        <div class="participant-block" data-idx="1">
+          <div class="participant-title">第 1 位（你自己）</div>
+          <div class="field">
+            <label>真實姓名（投保用） <span class="req">*</span></label>
+            <input type="text" class="p-name" placeholder="請填身分證上的全名">
+          </div>
+          <div class="field">
+            <label>手機號碼 <span class="req">*</span></label>
+            <input type="text" class="p-contact" placeholder="方便聯繫的手機號碼">
+          </div>
+          <div class="field">
+            <label>身分證字號（投保用） <span class="req">*</span></label>
+            <input type="text" class="p-id" placeholder="A123456789">
+          </div>
+          <div class="field">
+            <label>生日（投保用） <span class="req">*</span></label>
+            <input type="date" class="p-dob">
+          </div>
+          <div class="field">
+            <label>你的身份（可複選）</label>
+            <div class="radio-row wrap" id="roleRow">
+              <div class="radio-opt" data-role="業務">業務</div>
+              <div class="radio-opt" data-role="一人老闆">一人老闆</div>
+              <div class="radio-opt" data-role="小編">小編</div>
+              <div class="radio-opt" data-role="其他">其他</div>
+            </div>
+          </div>
+          <div class="field">
+            <label>工作資歷</label>
+            <select id="fExperience">
+              <option value="">請選擇</option>
+              <option value="0-3年">0-3 年</option>
+              <option value="3-5年">3-5 年</option>
+              <option value="5-8年">5-8 年</option>
+              <option value="8年以上">8 年以上</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="extraParticipants"></div>
+
+        <div class="field">
+          <label>Email（接收報名確認信） <span class="req">*</span></label>
+          <input type="email" id="fEmail" placeholder="這裡會收到報名確認單">
+        </div>
+
+        <div class="field">
+          <label class="helper-check" id="helperCheck">
+            <input type="checkbox" id="fHelper">
+            <span>我想擔任這場的小幫手（半價 $440）</span>
+          </label>
+          <div class="field-hint">工作內容：場地佈置・協助報到・說明活動・拍照記錄・結束後一起收拾場地。開放 2 位申請（1 正取＋1 備取，如需遞補會另行電話通知），一張訂單限申請 1 位，額滿後這個選項會自動關閉</div>
+          <div class="field" id="helperWhoField" style="display:none; margin-top:10px;">
+            <label>是哪一位擔任小幫手？ <span class="req">*</span></label>
+            <select id="fHelperWho">
+              <option value="">請選擇</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="helper-check" id="consentCheck">
+            <input type="checkbox" id="fConsent">
+            <span>我同意提供上列個人資料（含身分證字號、生日）予主辦單位，僅用於本次活動投保平安保險與活動聯繫，不做其他用途</span>
+          </label>
+        </div>
+
+        <div class="field">
+          <label>備註（飲食禁忌、想先說的話都可以）</label>
+          <textarea id="fNote" placeholder="選填"></textarea>
+        </div>
+        <button type="submit" class="submit-btn" id="submitBtn">送出報名</button>
+        <div class="error-msg" id="errorMsg">請確認場次、每位參加者的完整資料、Email，並勾選個資聲明</div>
+        <div class="submit-note">送出後喵老師會私訊確認席位與匯款資訊</div>
+      </form>
+    </div>
+  </div>
+
+  <div class="success" id="successBlock">
+    <div class="success-card">
+      <div class="success-icon">🍲</div>
+      <h3>報名收到了！</h3>
+      <p>這是你的報名確認單，喵老師也會盡快私訊確認席位與匯款資訊。</p>
+      <div class="confirm-slip" id="confirmSlip"></div>
+      <p class="confirm-note">確認信將寄至你留的 Email，若沒收到請直接透過 LINE ID：413vjwfv 聯繫喵老師確認。</p>
+    </div>
+  </div>
+
+  <footer>
+    © Farm新食｜活動．課程．餐會。All Rights Reserved.
+  </footer>
+
+</div>
+
+<script>
+  const sessionList = document.getElementById('sessionList');
+  const roleRow = document.getElementById('roleRow');
+  const form = document.getElementById('regForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const errorMsg = document.getElementById('errorMsg');
+  const successBlock = document.getElementById('successBlock');
+  const countVal = document.getElementById('countVal');
+  const countMinus = document.getElementById('countMinus');
+  const countPlus = document.getElementById('countPlus');
+  const extraParticipants = document.getElementById('extraParticipants');
+  const MAX_COUNT = 6;
+  const selectedRoles = new Set();
+  let partyCount = 1;
+  const fHelper = document.getElementById('fHelper');
+  const helperCheck = document.getElementById('helperCheck');
+  const helperWhoField = document.getElementById('helperWhoField');
+  const fHelperWho = document.getElementById('fHelperWho');
+  const fConsent = document.getElementById('fConsent');
+  const fEmail = document.getElementById('fEmail');
+  const fExperience = document.getElementById('fExperience');
+  const HELPER_LIMIT = 2;
+  const PRICE = 880;
+  const HELPER_PRICE = 440;
+
+  // ══════════════════════════════════════
+  //  LIFF：取得 LINE 使用者 ID 與顯示名稱
+  // ══════════════════════════════════════
+  const LIFF_ID = '2011023659-YmaFGty6';
+  let lineUserId = '';
+  let lineDisplayName = '';
+
+  async function initLiff() {
+    try {
+      await liff.init({ liffId: LIFF_ID });
+      if (!liff.isLoggedIn()) {
+        liff.login();
+        return;
+      }
+      const profile = await liff.getProfile();
+      lineUserId = profile.userId;
+      lineDisplayName = profile.displayName;
+
+      const statusEl = document.getElementById('lineStatus');
+      if (statusEl) {
+        statusEl.textContent = `LINE 帳號已連動：${lineDisplayName}`;
+        statusEl.style.display = 'flex';
+      }
+      // 注意：報名姓名欄位（p1-name）不自動帶入 LINE 顯示名稱，
+      // 因為投保平安險需要身分證上的真實全名，必須由使用者手動填寫
+    } catch (err) {
+      console.warn('LIFF 初始化失敗，可能是在一般瀏覽器開啟（非 LINE 內開啟）：', err);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initLiff);
+
+  async function getHelperCountForSession(sessionId) {
+    let count = 0;
+    try {
+      const listResult = await window.storage.list('soulsoup-reg:', true);
+      const keys = (listResult && listResult.keys) || [];
+      for (const k of keys) {
+        try {
+          const r = await window.storage.get(k, true);
+          if (!r || !r.value) continue;
+          const entry = JSON.parse(r.value);
+          if (entry.sessionId === sessionId && entry.wantsHelper) count++;
+        } catch (_) { /* skip unreadable entries */ }
+      }
+    } catch (_) { /* if listing fails, don't block signup on this check */ }
+    return count;
+  }
+
+  async function refreshHelperAvailability() {
+    const selectedCard = sessionList.querySelector('.session-card.selected');
+    if (!selectedCard) {
+      helperCheck.classList.remove('disabled');
+      fHelper.disabled = false;
+      return;
+    }
+    const sessionId = selectedCard.dataset.session;
+    const count = await getHelperCountForSession(sessionId);
+    if (count >= HELPER_LIMIT) {
+      helperCheck.classList.add('disabled');
+      fHelper.disabled = true;
+      fHelper.checked = false;
+    } else {
+      helperCheck.classList.remove('disabled');
+      fHelper.disabled = false;
+    }
+  }
+
+  sessionList.querySelectorAll('.session-card').forEach(card => {
+    card.addEventListener('click', () => {
+      sessionList.querySelectorAll('.session-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      card.querySelector('input').checked = true;
+      refreshHelperAvailability();
+    });
+  });
+
+  roleRow.querySelectorAll('.radio-opt').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const role = opt.dataset.role;
+      if (selectedRoles.has(role)) {
+        selectedRoles.delete(role);
+        opt.classList.remove('selected');
+      } else {
+        selectedRoles.add(role);
+        opt.classList.add('selected');
+      }
+    });
+  });
+
+  function renderExtraParticipants() {
+    extraParticipants.innerHTML = '';
+    for (let i = 2; i <= partyCount; i++) {
+      const block = document.createElement('div');
+      block.className = 'participant-block';
+      block.dataset.idx = i;
+      block.innerHTML = `
+        <div class="participant-title">第 ${i} 位</div>
+        <div class="field">
+          <label>真實姓名（投保用） <span class="req">*</span></label>
+          <input type="text" class="p-name" placeholder="請填身分證上的全名">
+        </div>
+        <div class="field">
+          <label>手機號碼 <span class="req">*</span></label>
+          <input type="text" class="p-contact" placeholder="方便聯繫的手機號碼">
+        </div>
+        <div class="field">
+          <label>身分證字號（投保用） <span class="req">*</span></label>
+          <input type="text" class="p-id" placeholder="A123456789">
+        </div>
+        <div class="field">
+          <label>生日（投保用） <span class="req">*</span></label>
+          <input type="date" class="p-dob">
+        </div>
+      `;
+      extraParticipants.appendChild(block);
+    }
+    countVal.textContent = partyCount;
+    countMinus.disabled = partyCount <= 1;
+    countPlus.disabled = partyCount >= MAX_COUNT;
+    populateHelperWhoOptions();
+  }
+
+  function populateHelperWhoOptions() {
+    const currentVal = fHelperWho.value;
+    fHelperWho.innerHTML = '<option value="">請選擇</option>';
+    for (let i = 1; i <= partyCount; i++) {
+      const opt = document.createElement('option');
+      opt.value = i;
+      opt.textContent = `第 ${i} 位`;
+      fHelperWho.appendChild(opt);
+    }
+    if (currentVal && Number(currentVal) <= partyCount) {
+      fHelperWho.value = currentVal;
+    }
+  }
+
+  fHelper.addEventListener('change', () => {
+    helperWhoField.style.display = fHelper.checked ? 'block' : 'none';
+    if (!fHelper.checked) fHelperWho.value = '';
+  });
+
+  countMinus.addEventListener('click', () => {
+    if (partyCount > 1) { partyCount--; renderExtraParticipants(); }
+  });
+  countPlus.addEventListener('click', () => {
+    if (partyCount < MAX_COUNT) { partyCount++; renderExtraParticipants(); }
+  });
+
+  function isValidEmail(v) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  }
+
+  function buildConfirmSlip(entry, sessionCard) {
+    const total = (entry.partyCount - (entry.wantsHelper ? 1 : 0)) * PRICE + (entry.wantsHelper ? HELPER_PRICE : 0);
+    const slip = document.getElementById('confirmSlip');
+    slip.innerHTML = `
+      <div class="row"><div class="k">活動</div><div class="v">心靈雞湯不說教：行業鬼故事大掃除</div></div>
+      <div class="row"><div class="k">場次</div><div class="v">${entry.sessionLabel}</div></div>
+      <div class="row"><div class="k">時間</div><div class="v">18:30 入席・18:45 開桌・約 21:00 結束</div></div>
+      <div class="row"><div class="k">地點</div><div class="v">新北市永和區中山路一段66號2樓</div></div>
+      <div class="row"><div class="k">報名人數</div><div class="v">${entry.partyCount} 人${entry.wantsHelper ? `（第 ${entry.helperParticipantIdx} 位申請小幫手）` : ''}</div></div>
+      <div class="row"><div class="k">應付金額</div><div class="v">$${total.toLocaleString()}</div></div>
+      <div class="row"><div class="k">匯款資料</div><div class="v">請洽喵老師 LINE 提供</div></div>
+    `;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorMsg.style.display = 'none';
+
+    const note = document.getElementById('fNote').value.trim();
+    const email = fEmail.value.trim();
+    const selectedCard = sessionList.querySelector('.session-card.selected');
+
+    const participantBlocks = document.querySelectorAll('.participant-block');
+    const participants = [];
+    let allValid = true;
+
+    participantBlocks.forEach(block => {
+      const name = block.querySelector('.p-name').value.trim();
+      const contact = block.querySelector('.p-contact').value.trim();
+      const idNumber = block.querySelector('.p-id').value.trim();
+      const dob = block.querySelector('.p-dob').value;
+      if (!name || !contact || !idNumber || !dob) allValid = false;
+      participants.push({ name, contact, idNumber, dob });
+    });
+
+    if (!allValid || !selectedCard || !email || !isValidEmail(email) || !fConsent.checked || (fHelper.checked && !fHelperWho.value)) {
+      errorMsg.style.display = 'block';
+      return;
+    }
+
+    const sessionId = selectedCard.dataset.session;
+    const sessionLabel = selectedCard.querySelector('.session-title').textContent;
+    const wantsHelper = fHelper.checked;
+    const helperParticipantIdx = wantsHelper ? Number(fHelperWho.value) : null;
+
+    if (wantsHelper) {
+      const currentHelperCount = await getHelperCountForSession(sessionId);
+      if (currentHelperCount >= HELPER_LIMIT) {
+        errorMsg.textContent = '這場的小幫手名額剛好額滿了，已自動取消小幫手勾選，其餘報名資訊可以直接送出';
+        errorMsg.style.display = 'block';
+        fHelper.checked = false;
+        fHelperWho.value = '';
+        helperWhoField.style.display = 'none';
+        helperCheck.classList.add('disabled');
+        fHelper.disabled = true;
+        return;
+      }
+      participants[helperParticipantIdx - 1].isHelper = true;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = '送出中…';
+
+    const entry = {
+      partyCount,
+      participants,
+      roles: Array.from(selectedRoles),
+      experience: fExperience.value,
+      email,
+      wantsHelper,
+      helperParticipantIdx,
+      note,
+      sessionId,
+      sessionLabel,
+      lineUserId,
+      lineDisplayName,
+      submittedAt: new Date().toISOString()
+    };
+
+    const key = 'soulsoup-reg:' + Date.now() + '-' + Math.random().toString(36).slice(2, 8);
+
+    try {
+      const result = await window.storage.set(key, JSON.stringify(entry), true);
+      if (!result) throw new Error('no result');
+      buildConfirmSlip(entry, selectedCard);
+      form.style.display = 'none';
+      document.querySelector('.sessions').style.display = 'none';
+      successBlock.style.display = 'block';
+    } catch (err) {
+      console.error('報名寫入失敗', err);
+      errorMsg.textContent = '網路有點不順，請稍後再試一次';
+      errorMsg.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = '送出報名';
+    }
+  });
+
+  renderExtraParticipants();
+  refreshHelperAvailability();
+</script>
+
+</body>
+</html>
